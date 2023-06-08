@@ -12,6 +12,8 @@ import org.nemotech.rsc.client.sound.SoundEffect;
 import org.nemotech.rsc.plugins.PluginManager;
 import org.nemotech.rsc.client.action.ActionHandler;
 
+import static org.nemotech.rsc.plugins.Plugin.*;
+
 public class WieldHandler implements ActionHandler {
 
     public void handleWield(int index) {
@@ -47,8 +49,23 @@ public class WieldHandler implements ActionHandler {
             }
         }
 
+        // Items that require certain quests be completed
+        if (id == 594 && player.getQuestStage(HEROS_QUEST) != -1) { // Dragon Axe
+            message(player, "you have not earned the right to wear this yet");
+            message(player, "you need to complete the Hero's guild entry quest");
+            return;
+        } else if (id == 593 && player.getQuestStage(LOST_CITY) != -1) { // Dragon sword
+            message(player, "you have not earned the right to wear this yet");
+            message(player, "you need to complete the Lost city of zanaris quest");
+            return;
+        } else if (id == 401 && player.getQuestStage(DRAGON_SLAYER) != -1) { // Rune plate body
+            message(player, "you have not earned the right to wear this yet");
+            message(player, "you need to complete the dragon slayer quest");
+            return;
+        }
+
         boolean canWield = PluginManager.getInstance().blockDefaultAction("Wield", new Object[]{player, item});
-        if (!canWield) {
+        if (canWield) {
             return;
         }
 
@@ -85,5 +102,4 @@ public class WieldHandler implements ActionHandler {
         player.getSender().sendInventory();
         player.getSender().sendEquipmentStats();
     }
-
 }
