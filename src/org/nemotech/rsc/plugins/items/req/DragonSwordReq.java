@@ -1,4 +1,4 @@
-package org.nemotech.rsc.plugins.items;
+package org.nemotech.rsc.plugins.items.req;
 
 import org.nemotech.rsc.model.player.InvItem;
 import org.nemotech.rsc.model.player.Player;
@@ -13,11 +13,14 @@ import static org.nemotech.rsc.plugins.Plugin.*;
 public class DragonSwordReq implements WieldExecutiveListener {
     @Override
     public boolean blockWield(Player player, InvItem item) {
-        if (item.getID() == 593 && player.getQuestStage(LOST_CITY) == 4) {
+        if (item.getID() != 593) {
+            return false;
+        }
+        if (player.getQuestStage(LOST_CITY) == 4) {
             return true;
         } else {
-            message(player,"you have not earned the right to wear this yet");
-            message(player,"you need to complete the Lost city of zanaris quest");
+            message(player, "you have not earned the right to wear this yet");
+            message(player, "you need to complete the Lost city of zanaris quest");
             return false;
         }
     }

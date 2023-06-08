@@ -340,10 +340,7 @@ public class Plugin {
     
     /**
      * Checks if this @param obj id is @param i
-     * 
-     * @param obj
-     * @param i
-     * @return
+     *
      */
     public static boolean isObject(GameObject obj, int i) {
         return obj.getID() == i;
@@ -360,10 +357,7 @@ public class Plugin {
     /**
      * Transforms npc into another please note that you will need to unregister
      * the transformed npc after using this method.
-     * 
-     * @param n
-     * @param newID
-     * @return
+     *
      */
     public static NPC transform(final NPC n, final int newID, boolean onlyShift) {
         final NPC newNpc = new NPC(newID, n.getX(), n.getY());
@@ -532,12 +526,7 @@ public class Plugin {
 
     /**
      * Creates a new ground item
-     * 
-     * @param id
-     * @param amount
-     * @param x
-     * @param y
-     * @param owner
+     *
      */
     public static void createGroundItem(int id, int amount, int x, int y, Player owner) {
         World.getWorld().registerItem(new Item(id, x, y, amount, owner));
@@ -547,11 +536,7 @@ public class Plugin {
 
     /**
      * Creates a new ground item
-     * 
-     * @param id
-     * @param amount
-     * @param x
-     * @param y
+     *
      */
     public static void createGroundItem(int id, int amount, int x, int y) {
         createGroundItem(id, amount, x, y, null);
@@ -833,11 +818,7 @@ public class Plugin {
     
     /**
      * Returns true if you are in any stages provided.
-     * 
-     * @param p
-     * @param quest
-     * @param stage
-     * @return
+     *
      */
     public static boolean atQuestStages(Player p, QuestInterface quest, int... stage) {
         boolean flag = false;
@@ -851,11 +832,7 @@ public class Plugin {
     
     /**
      * Checks if players quest stage for this quest is @param stage
-     * 
-     * @param p
-     * @param qID
-     * @param stage
-     * @return
+     *
      */
     public static boolean atQuestStage(Player p, int qID, int stage) {
         return getQuestStage(p, qID) == stage;
@@ -863,11 +840,7 @@ public class Plugin {
     
     /**
      * Checks if players quest stage for this quest is @param stage
-     * 
-     * @param p
-     * @param qID
-     * @param stage
-     * @return
+     *
      */
     public static boolean atQuestStage(Player p, QuestInterface quest, int stage) {
         return getQuestStage(p, quest) == stage;
@@ -875,10 +848,7 @@ public class Plugin {
     
     /**
      * Returns the quest stage for @param quest
-     * 
-     * @param p
-     * @param quest
-     * @return
+     *
      */
     public static int getQuestStage(Player p, QuestInterface quest) {
         return p.getQuestStage(quest);
@@ -886,11 +856,7 @@ public class Plugin {
 
     /**
      * Returns the quest stage for @param qID
-     * 
-     * @param p
-     * @param qID
-     * @param stage
-     * @return
+     *
      */
     public static int getQuestStage(Player p, int questID) {
         return p.getQuestStage(questID);
@@ -918,19 +884,17 @@ public class Plugin {
     }
 
     /**
-     * Displays server message(s) with 2.2 second delay.
-     * 
-     * @param player
-     * @param messages
+     * Displays server message(s) with 2.2-second delay.
+     *
      */
     public static void message(final Player player, final String... messages) {
         for (final String message : messages) {
             if (!message.equalsIgnoreCase("null")) {
                 if (player.getInteractingNpc() != null) {
-                    player.getInteractingNpc().setBusyTimer(1900);
+                    player.getInteractingNpc().setBusyTimer(500);
                 }
                 player.message(message);
-                player.setBusyTimer(1900);
+                player.setBusyTimer(500);
             }
             // sleep(1900);
         }
@@ -939,10 +903,7 @@ public class Plugin {
     
     /**
      * Sets Quest with ID @param questID's stage to @parma stage
-     * 
-     * @param p
-     * @param questID
-     * @param stage
+     *
      */
     public static void setQuestStage(final Player p, final int questID, final int stage) {
         p.updateQuestStage(questID, stage);
@@ -950,10 +911,7 @@ public class Plugin {
 
     /**
      * Sets @param quest 's stage to @param stage
-     * 
-     * @param p
-     * @param questID
-     * @param stage
+     *
      */
     public static void setQuestStage(Player p, QuestInterface quest, int stage) {
         p.updateQuestStage(quest, stage);
@@ -1491,8 +1449,6 @@ public class Plugin {
     /**
      * Npc chat method not blocking
      * 
-     * @param player
-     * @param npc
      * @param messages
      *            - String array of npc dialogue lines.
      */
