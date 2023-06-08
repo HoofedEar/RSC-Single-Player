@@ -7,17 +7,18 @@ import org.nemotech.rsc.plugins.listeners.executive.WieldExecutiveListener;
 import static org.nemotech.rsc.plugins.Plugin.*;
 
 /*
-    Ensures that the player is allowed to wield the Dragon Sword
+    Ensures that the player is allowed to equip the Rune Platebody
  */
 @SuppressWarnings("unused")
-public class DragonSword implements WieldExecutiveListener {
+public class RunePlatebodyReq implements WieldExecutiveListener {
     @Override
     public boolean blockWield(Player player, InvItem item) {
-        if (item.getID() == 593 && player.getQuestStage(LOST_CITY) != 4) {
+        if (item.getID() == 401 && player.getQuestStage(DRAGON_SLAYER) == 4) {
+            return true;
+        } else {
             message(player,"you have not earned the right to wear this yet");
-            message(player,"you need to complete the Lost city of zanaris quest");
+            message(player,"you need to complete the dragon slayer quest");
             return false;
         }
-        return true;
     }
 }

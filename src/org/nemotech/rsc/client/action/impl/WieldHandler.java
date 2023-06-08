@@ -46,9 +46,12 @@ public class WieldHandler implements ActionHandler {
                 handleUnwield(i, false);
             }
         }
-        if (!PluginManager.getInstance().blockDefaultAction("Wield", new Object[]{player, item})) {
+
+        boolean canWield = PluginManager.getInstance().blockDefaultAction("Wield", new Object[]{player, item});
+        if (!canWield) {
             return;
         }
+
         item.setWield(true);
         player.getSender().sendSound(SoundEffect.CLICK);
         int pos = EntityManager.getItemWieldableDef(id).getWieldPos();
