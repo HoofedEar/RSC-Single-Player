@@ -13,20 +13,20 @@ import org.nemotech.rsc.plugins.PluginManager;
 import org.nemotech.rsc.client.action.ActionHandler;
 
 public class WieldHandler implements ActionHandler {
-    
+
     public void handleWield(int index) {
         Player player = World.getWorld().getPlayer();
         if (player.isBusy() && !player.inCombat()) {
             return;
         }
-        
+
         player.reset();
-        
+
         InvItem item = player.getInventory().get(index);
         int id = item.getID();
-        
+
         String requirements = "";
-        
+
         for (Map.Entry<Integer, Integer> e : EntityManager.getItemWieldableDef(id).getStatsRequired()) {
             if (player.getMaxStat(e.getKey()) < e.getValue()) {
                 requirements += e.getValue() + " " + Formulae.STAT_NAMES[e.getKey()] + ", ";
@@ -46,7 +46,7 @@ public class WieldHandler implements ActionHandler {
                 handleUnwield(i, false);
             }
         }
-        if(PluginManager.getInstance().blockDefaultAction("Wield", new Object[] { player, item })) {
+        if (!PluginManager.getInstance().blockDefaultAction("Wield", new Object[]{player, item})) {
             return;
         }
         item.setWield(true);
@@ -56,21 +56,21 @@ public class WieldHandler implements ActionHandler {
         player.getSender().sendInventory();
         player.getSender().sendEquipmentStats();
     }
-    
+
     public void handleUnwield(int index) {
         Player player = World.getWorld().getPlayer();
         handleUnwield(player.getInventory().get(index), true);
     }
-    
+
     public void handleUnwield(InvItem item, boolean sound) {
         Player player = World.getWorld().getPlayer();
         if (player.isBusy() && !player.inCombat()) {
             return;
         }
-        
+
         player.reset();
         int id = item.getID();
-        if(PluginManager.getInstance().blockDefaultAction("Unwield", new Object[] { player, item })) {
+        if (PluginManager.getInstance().blockDefaultAction("Unwield", new Object[]{player, item})) {
             return;
         }
         item.setWield(false);
@@ -82,5 +82,5 @@ public class WieldHandler implements ActionHandler {
         player.getSender().sendInventory();
         player.getSender().sendEquipmentStats();
     }
-    
+
 }
