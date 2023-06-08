@@ -81,12 +81,13 @@ public class mudclient extends Shell {
         createAppearancePanel();
 
         panelMagic = new Menu(surface, 5);
-        int x = surface.width2;
-        controlListMagic = panelMagic.addTextListInteractive(x, 0, 196, 90, 1, 500, true);
+        int x = surface.width2 - 199;
+        byte y = 36;
+        controlListMagic = panelMagic.addTextListInteractive(x, y + 24, 196, 90, 1, 500, true);
         panelMusic = new Menu(surface, 5);
-        controlListMusic = panelMusic.addTextListInteractive(x, 0, 196, 166, 1, 2000, true);
+        controlListMusic = panelMusic.addTextListInteractive(x, y + 24, 196, 166 - 24, 1, 2000, true);
         panelQuestList = new Menu(surface, 5);
-        controlListQuest = panelQuestList.addTextListInteractive(x, 0, 196, 251, 1, 500, true);
+        controlListQuest = panelQuestList.addTextListInteractive(x, y + 24, 196, 251, 1, 500, true);
 
         graphics = getGraphics();
         //repaint();
