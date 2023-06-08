@@ -208,7 +208,7 @@ public class InvUseOnItem implements InvUseOnItemListener, InvUseOnItemExecutive
         if (player.getInventory().remove(firstHalf) > -1 && player.getInventory().remove(secondHalf) > -1) {
             player.message("You combine the key halves to make a crystal key.");
             player.getInventory().add(new InvItem(525, 1));
-            
+
         }
         return true;
     }
@@ -248,7 +248,7 @@ public class InvUseOnItem implements InvUseOnItemListener, InvUseOnItemExecutive
          */
         if(item1.getID() == 245 && item2.getID() == 239 || item1.getID() == 239 && item2.getID() == 245)
             return true;
-        if(item1.getID() == 526)
+        if(item1.getID() == 526 && item2.getID() == 527 || item1.getID() == 527 && item2.getID() == 526)
             return true;
         if(item1.getID() == 143 && item2.getID() == 141)
             return true;
