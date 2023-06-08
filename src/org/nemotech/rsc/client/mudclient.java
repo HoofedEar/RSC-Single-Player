@@ -3163,10 +3163,10 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
         if(errorLoadingData) return;
         scene = new Scene(surface, 15000, 15000, 4096);
         scene.setBounds(gameWidth / 2, gameHeight / 2, gameWidth / 2, gameHeight / 2, gameWidth, const_9);
-        scene.clipFar3d = 2400;
-        scene.clipFar2d = 2400;
+        scene.clipFar3d = 4400;
+        scene.clipFar2d = 4400;
         scene.fogZDensity = 1;
-        scene.fogZDistance = 2300;
+        scene.fogZDistance = 4300;
         scene.setLight(-50, -10, -50);
         world = new Terrain(scene, surface);
         loadTextures();
@@ -3709,10 +3709,10 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
                     cameraAutoRotatePlayerY = localPlayer.currentY;
                 }
             }
-            scene.clipFar3d = 3000;
-            scene.clipFar2d = 3000;
+            scene.clipFar3d = 6000;
+            scene.clipFar2d = 6000;
             scene.fogZDensity = 1;
-            scene.fogZDistance = 2800;
+            scene.fogZDistance = 4800;
             cameraRotation = cameraAngle * 32;
             int x = cameraAutoRotatePlayerX + cameraRotationX;
             int y = cameraAutoRotatePlayerY + cameraRotationY;
@@ -3722,15 +3722,15 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
                 autorotateCamera();
             }
             if (!super.interlace) {
-                scene.clipFar3d = 2400;
-                scene.clipFar2d = 2400;
+                scene.clipFar3d = 4400;
+                scene.clipFar2d = 4400;
                 scene.fogZDensity = 1;
-                scene.fogZDistance = 2300;
+                scene.fogZDistance = 4300;
             } else {
-                scene.clipFar3d = 2200;
-                scene.clipFar2d = 2200;
+                scene.clipFar3d = 4200;
+                scene.clipFar2d = 4200;
                 scene.fogZDensity = 1;
-                scene.fogZDistance = 2100;
+                scene.fogZDistance = 4100;
             }
             int x = cameraAutoRotatePlayerX + cameraRotationX;
             int y = cameraAutoRotatePlayerY + cameraRotationY;
