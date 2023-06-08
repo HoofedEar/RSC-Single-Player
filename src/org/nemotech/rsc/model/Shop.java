@@ -155,54 +155,7 @@ public final class Shop {
     }
 
     public int getGenericPrice(InvItem item, boolean buy) {
-        int amount = item.getAmount();
-        int basePrice = item.getDef().getPrice();
-
-        if (basePrice == 0) {
-            return 0;
-        }
-
-        int equilibrium = 0;
-
-        if (shouldStock(item.getID())) {
-            for (InvItem item1 : items) {
-                if (item1.getID() == item.getID()) {
-                    equilibrium = item1.getAmount();
-                }
-            }
-        } else {
-            equilibrium = -2;
-        }
-
-        double percent = (equilibrium > 100 ? 0.01 : 0.05);
-
-        int minItemValue = basePrice / 4;
-        int maxItemValue = basePrice * 2;
-
-        int price;
-
-        if (buy) {
-            price = basePrice;
-            if (amount < equilibrium) {
-                price += Math.round(price * (percent * (equilibrium - amount)));
-            }
-        } else {
-            price = basePrice / 2;
-            if (amount > equilibrium) {
-                price -= Math.round(price * (percent * (amount - equilibrium)));
-            }
-        }
-
-        if (price > maxItemValue) {
-            price = maxItemValue; 
-        } else if (price < minItemValue) {
-            price = minItemValue; 
-        }
-
-        if (price == 0) {
-            return buy ? 1 : 0;
-        }
-        return price;
+        return item.getDef().getPrice() / 2;
     }
 
     public int getItemPrice(int index, boolean buy) {
