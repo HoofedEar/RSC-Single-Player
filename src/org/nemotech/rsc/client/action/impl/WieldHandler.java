@@ -25,14 +25,14 @@ public class WieldHandler implements ActionHandler {
         InvItem item = player.getInventory().get(index);
         int id = item.getID();
 
-        String requirements = "";
+        StringBuilder requirements = new StringBuilder();
 
         for (Map.Entry<Integer, Integer> e : EntityManager.getItemWieldableDef(id).getStatsRequired()) {
             if (player.getMaxStat(e.getKey()) < e.getValue()) {
-                requirements += e.getValue() + " " + Formulae.STAT_NAMES[e.getKey()] + ", ";
+                requirements.append(e.getValue()).append(" ").append(Formulae.STAT_NAMES[e.getKey()]).append(", ");
             }
         }
-        if (!requirements.equals("")) {
+        if (!requirements.toString().equals("")) {
             player.getSender().sendMessage("You must have at least " + requirements.substring(0, requirements.length() - 2) + " to use this item");
             return;
         }

@@ -7,6 +7,7 @@ import org.nemotech.rsc.plugins.listeners.executive.WieldExecutiveListener;
 import static org.nemotech.rsc.plugins.Plugin.LOST_CITY;
 import static org.nemotech.rsc.plugins.Plugin.message;
 
+@SuppressWarnings("unused")
 public class DragonSword implements WieldExecutiveListener {
     @Override
     public boolean blockWield(Player player, InvItem item) {
