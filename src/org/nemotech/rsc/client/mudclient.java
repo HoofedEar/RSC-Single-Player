@@ -1628,8 +1628,10 @@ public class mudclient extends Shell {
             cameraRotation = cameraRotation - 2 & 255;// 0xff;
         } else if (super.keyDown) {
             //
+            cameraZoom += 2;
         } else if (super.keyUp) {
             //
+            cameraZoom -= 2;
         }
         if (fogOfWar && cameraZoom > 550 - 180) {
             cameraZoom -= 4;
@@ -3355,8 +3357,8 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
     private void drawDialogShop() {
         if (mouseButtonClick != 0) {
             mouseButtonClick = 0;
-            int mouseX = super.mouseX - 52;
-            int mouseY = super.mouseY - 44;
+            int mouseX = super.mouseX - (gameWidth / 2 - 408 / 2);
+            int mouseY = super.mouseY - (gameHeight / 2 - 192 / 2);
             if (mouseX >= 0 && mouseY >= 12 && mouseX < 408 && mouseY < 246) {
                 int itemIndex = 0;
                 for (int row = 0; row < 5; row++) {
@@ -3388,8 +3390,9 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
                 return;
             }
         }
-        byte dialogX = 52;
-        byte dialogY = 44;
+
+        int dialogX = gameWidth / 2 - 408 / 2;
+        int dialogY = gameHeight / 2 - 192 / 2;
         surface.drawBox(dialogX, dialogY, 408, 12, 192);
         surface.drawBoxAlpha(dialogX, dialogY + 12, 408, 17, 0x989898, 160);
         surface.drawBoxAlpha(dialogX, dialogY + 29, 8, 170, 0x989898, 160);
