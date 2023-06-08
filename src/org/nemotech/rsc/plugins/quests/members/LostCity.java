@@ -66,8 +66,10 @@ public class LostCity implements QuestInterface, TalkToNpcListener,
             LEPRECHAUN = 211, MONK_OF_ENTRANA = 213, TREE_SPIRIT = 216;
 
     /**
-     * Quest stage 1: Talked to adventurer Quest stage 2: Talked to leprechaun
-     * Quest stage 3: Chopped the spirit tree Quest stage 4: Defeated the spirit
+     * Quest stage 1: Talked to adventurer
+     * Quest stage 2: Talked to leprechaun
+     * Quest stage 3: Chopped the spirit tree
+     * Quest stage 4: Defeated the spirit
      * tree.
      */
     @Override

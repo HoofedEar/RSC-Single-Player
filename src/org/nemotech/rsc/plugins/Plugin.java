@@ -932,7 +932,7 @@ public class Plugin {
                 player.message(message);
                 player.setBusyTimer(1900);
             }
-            sleep(1900);
+            // sleep(1900);
         }
         player.setBusyTimer(0);
     }
