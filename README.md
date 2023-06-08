@@ -3,7 +3,7 @@ RSC Single Player is a standalone single player RSC reproduction and sandbox. Th
   
 For the original repo, releases, etc. please go here: https://github.com/sean-niemann/RSC-Single-Player
 
-This repo is a fork that looks to continue the work of Sean and get it in a stable, working state. And maybe in the future, allow for custom content.
+This repo is a fork that looks to continue the work of Sean and update the project to be as accurate as it possibly can be. And maybe in the future, allow for custom content.
 # Requirements
 * Java 8 or newer
 
