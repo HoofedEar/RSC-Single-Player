@@ -42,12 +42,7 @@ public class WieldHandler implements ActionHandler {
             player.getSender().sendMessage("This piece of armor is for a female only");
             return;
         }
-        ArrayList<InvItem> items = player.getInventory().getItems();
-        for (InvItem i : items) {
-            if (item.wieldingAffectsItem(i) && i.isWielded()) {
-                handleUnwield(i, false);
-            }
-        }
+
 
         // Items that require certain quests be completed
         if (id == 594 && player.getQuestStage(HEROS_QUEST) != -1) { // Dragon Axe
@@ -67,6 +62,13 @@ public class WieldHandler implements ActionHandler {
         boolean canWield = PluginManager.getInstance().blockDefaultAction("Wield", new Object[]{player, item});
         if (canWield) {
             return;
+        }
+
+        ArrayList<InvItem> items = player.getInventory().getItems();
+        for (InvItem i : items) {
+            if (item.wieldingAffectsItem(i) && i.isWielded()) {
+                handleUnwield(i, false);
+            }
         }
 
         item.setWield(true);
