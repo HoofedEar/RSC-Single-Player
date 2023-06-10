@@ -838,7 +838,8 @@ public class mudclient extends Shell {
         if (logoutTimeout != 0) {
             drawDialogLogout();
         } else if (showDialogWelcome) {
-            drawDialogWelcome();
+            // drawDialogWelcome();
+            showDialogWelcome = false;
         } else if (showDialogServerMessage) {
             drawDialogServerMessage();
         } else if (showUiWildWarn == 1) {
@@ -1684,7 +1685,7 @@ public class mudclient extends Shell {
         panelLoginWelcome.addButtonBackground(x - 100, 240 + y, 120, 35);
         panelLoginWelcome.addButtonBackground(x + 100, 240 + y, 120, 35);
         panelLoginWelcome.addText(x - 100, 240 + y, "New User", 5, false);
-        panelLoginWelcome.addText(x + 100, 240 + y, "Existing User", 5, false);
+        panelLoginWelcome.addText(x + 100, 240 + y, "Load User", 5, false);
         controlWelcomeNewUser = panelLoginWelcome.addButton(x - 100, 240 + y, 120, 35);
         controlWelcomeExistingUser = panelLoginWelcome.addButton(x + 100, 240 + y, 120, 35);
         panelRegisterUser = new Menu(surface, 50);
@@ -3166,7 +3167,7 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
         scene.clipFar3d = 4400;
         scene.clipFar2d = 4400;
         scene.fogZDensity = 1;
-        scene.fogZDistance = 4300;
+        scene.fogZDistance = 2300;
         scene.setLight(-50, -10, -50);
         world = new Terrain(scene, surface);
         loadTextures();
@@ -3712,7 +3713,7 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
             scene.clipFar3d = 6000;
             scene.clipFar2d = 6000;
             scene.fogZDensity = 1;
-            scene.fogZDistance = 4800;
+            scene.fogZDistance = 2800;
             cameraRotation = cameraAngle * 32;
             int x = cameraAutoRotatePlayerX + cameraRotationX;
             int y = cameraAutoRotatePlayerY + cameraRotationY;
@@ -3725,12 +3726,12 @@ OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimation
                 scene.clipFar3d = 4400;
                 scene.clipFar2d = 4400;
                 scene.fogZDensity = 1;
-                scene.fogZDistance = 4300;
+                scene.fogZDistance = 2300;
             } else {
                 scene.clipFar3d = 4200;
                 scene.clipFar2d = 4200;
                 scene.fogZDensity = 1;
-                scene.fogZDistance = 4100;
+                scene.fogZDistance = 2100;
             }
             int x = cameraAutoRotatePlayerX + cameraRotationX;
             int y = cameraAutoRotatePlayerY + cameraRotationY;
